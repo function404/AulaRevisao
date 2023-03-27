@@ -10,6 +10,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import LoginScreen from "./screens/Login";
 import Login from "./screens/Login";
+import Register from "./screens/Register";
 
 // import Main from "./components/src/components/main";
 
@@ -18,7 +19,7 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="HomeScreen">
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
@@ -34,6 +35,7 @@ export default function RootNavigation() {
         <Stack.Screen name="Sobre" component={AboutScreen} />
         <Stack.Screen name="Contato" component={ContactScreen} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false}} />
+        <Stack.Screen name='Registro' component={Register} options={{ headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -87,6 +89,20 @@ function TabsNavigation() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="account"
+              color={"#00c2cc"}
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Registro"
+        component={Register}
+        options={{
+          tabBarLabel: "Register",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="book"
               color={"#00c2cc"}
               size={26}
             />
