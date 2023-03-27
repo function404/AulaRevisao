@@ -8,7 +8,8 @@ import ContactScreen from "./screens/ContactScreen";
 import SplashScreen from "./screens/SplashScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import LoginScreen from "./screens/login";
+import LoginScreen from "./screens/Login";
+import Login from "./screens/Login";
 
 // import Main from "./components/src/components/main";
 
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
@@ -32,7 +33,7 @@ export default function RootNavigation() {
 
         <Stack.Screen name="Sobre" component={AboutScreen} />
         <Stack.Screen name="Contato" component={ContactScreen} />
-        <Stack.Screen name='Login' component={LoginScreen} />
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -69,8 +70,18 @@ function TabsNavigation() {
         }}
       />
       <Tabs.Screen
+        name="Contato"
+        component={ContactScreen}
+        options={{
+          tabBarLabel: "Contato",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="phone" color={"#00c2cc"} size={26} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="Login"
-        component={LoginScreen}
+        component={Login}
         options={{
           tabBarLabel: "Login",
           tabBarIcon: ({ color }) => (
