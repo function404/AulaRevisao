@@ -5,29 +5,31 @@ import { auth } from "../config/firebase";
 import { Button, Paragraph, TextInput } from "react-native-paper";
 import styles from "../utils/styles";
 
-export default function Register() {
+export default function Register({ navigation }) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [Senhac, setSenhac] = useState("");
 
   function handleRegister() {
-    if(email !== "" && senha !== "" && nome !== "" && Senhac !== "") {
-      if(senha !== Senhac) {
-        alert('Senha não conferem');
+    if (email !== "" && senha !== "" && nome !== "" && Senhac !== "") {
+      if (senha !== Senhac) {
+        alert("Senha não conferem");
         return;
       }
-      createUserWithEmailAndPassword(auth, email, senha).then((userCredential) => {
-        alert('Usuário cadastrado com sucesso!');
-        navigation.navigate('Login');
-      }).catch((error) => {
-        alert(error);
-      })
-    }else{
-      alert('Insira todas as informações');
+      createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+          alert("Usuário cadastrado com sucesso!");
+          navigation.navigate("Login");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    } else {
+      alert("Insira todas as informações");
       return;
     }
-  }      
+  }
 
   return (
     <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
@@ -83,7 +85,24 @@ export default function Register() {
           onChangeText={setSenhac}
           mode="outlined"
         />
-        <Button onPress={handleRegister}>Registre-se</Button>
+        <Button 
+           style={{
+            marginTop: "10px",
+            backgroundColor: "#00c2cc",
+            borderColor: "#fff",
+          }}
+          labelStyle={{ color: "#fff" }}
+
+          onPress={handleRegister}>Registre-se</Button>
+       <View>
+          <Button
+            onPress={() => {
+              navigation.navigate("Login");
+            }}
+          >
+            Login
+          </Button>
+        </View>
       </View>
     </View>
   );

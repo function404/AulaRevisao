@@ -8,11 +8,11 @@ import ContactScreen from "./screens/ContactScreen";
 import SplashScreen from "./screens/SplashScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import LoginScreen from "./screens/Login";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import FetchNews from "./screens/FetchNews";
-import fetchNews from "./screens/FetchNews";
+import RickMorty from "./screens/RickMorty";
+import RMGameScreen from "./screens/RMGameScreen";
 
 // import Main from "./components/src/components/main";
 
@@ -33,12 +33,13 @@ export default function RootNavigation() {
           component={TabsNavigation}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen name="Sobre" component={AboutScreen} />
         <Stack.Screen name="Contato" component={ContactScreen} />
         <Stack.Screen name="FetchNews" component={FetchNews} />
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false}} />
-        <Stack.Screen name='Registro' component={Register} options={{ headerShown: false}} />
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Registro' component={Register} />
+        <Stack.Screen name='RickMorty' component={RickMorty} />
+        <Stack.Screen name='RMGameScreen' component={RMGameScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -64,7 +65,7 @@ function TabsNavigation() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="Sobre"
         component={AboutScreen}
         options={{
@@ -83,8 +84,8 @@ function TabsNavigation() {
             <MaterialCommunityIcons name="phone" color={"#00c2cc"} size={26} />
           ),
         }}
-      />
-      <Tabs.Screen
+      /> */}
+      {/* <Tabs.Screen
         name="Login"
         component={Login}
         options={{
@@ -97,7 +98,7 @@ function TabsNavigation() {
             />
           ),
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="Registro"
         component={Register}
@@ -120,6 +121,34 @@ function TabsNavigation() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="newspaper"
+              color={"#00c2cc"}
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="RickMorty"
+        component={RickMorty}
+        options={{
+          tabBarLabel: "RickMorty",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="newspaper"
+              color={"#00c2cc"}
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="RMGamr"
+        component={RMGameScreen}
+        options={{
+          tabBarLabel: "RMGameScreen",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="book"
               color={"#00c2cc"}
               size={26}
             />

@@ -3,9 +3,9 @@ import { View, Image } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-import styles from "../utils/styles";
 
-export default function Login() {
+
+  export default function Login({navigation}) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -63,7 +63,14 @@ export default function Login() {
               placeholder="Digite sua senha"
               secureTextEntry={true} // faz com  que o texte pareça ser uma senha
             />
-            <Button onPress={handleLogin}>Registre-se</Button>
+            <Button 
+               style={{
+                marginTop: "10px",
+                backgroundColor: "#00c2cc",
+                borderColor: "#fff",
+              }}
+              labelStyle={{ color: "#fff" }}
+              onPress={handleLogin}>Registre-se</Button>
           </View>
         </View>
       </View>
