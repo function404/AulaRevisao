@@ -77,14 +77,16 @@ const styles = StyleSheet.create({
       fontSize: 18,
     },
     right:{
+      textAlign: 'center',
       marginTop: 5,
       color: 'green',
     },
     err:{
+      textAlign: 'center',
       marginTop: 5,
       color: 'red',
     },
-    win:{
+    pontos:{
       textAlign: 'center',
       fontSize: 22,
       marginTop: 5,

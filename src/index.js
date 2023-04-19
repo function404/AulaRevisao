@@ -36,10 +36,10 @@ export default function RootNavigation() {
         <Stack.Screen name="Sobre" component={AboutScreen} />
         <Stack.Screen name="Contato" component={ContactScreen} />
         <Stack.Screen name="FetchNews" component={FetchNews} />
-        <Stack.Screen name='Login' component={Login} />
-        <Stack.Screen name='Registro' component={Register} />
-        <Stack.Screen name='RickMorty' component={RickMorty} />
-        <Stack.Screen name='RMGameScreen' component={RMGameScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Registro" component={Register} />
+        <Stack.Screen name="RickMorty" component={RickMorty} />
+        <Stack.Screen name="RMGameScreen" component={RMGameScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -105,11 +105,7 @@ function TabsNavigation() {
         options={{
           tabBarLabel: "Register",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="book"
-              color={"#00c2cc"}
-              size={26}
-            />
+            <MaterialCommunityIcons name="book" color={"#00c2cc"} size={26} />
           ),
         }}
       />
@@ -147,11 +143,7 @@ function TabsNavigation() {
         options={{
           tabBarLabel: "RMGameScreen",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="book"
-              color={"#00c2cc"}
-              size={26}
-            />
+            <MaterialCommunityIcons name="book" color={"#00c2cc"} size={26} />
           ),
         }}
       />

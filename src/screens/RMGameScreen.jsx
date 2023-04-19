@@ -6,6 +6,9 @@ import styles from "../utils/styles";
 export default function RMGameScreen() {
   const [Personagem, setarPersonagem] = useState(null);
   const [Personagens, setarPersonagens] = useState(0);
+  const [conta, setarConta] = useState("");
+
+  const [infos, setarInfos] = useState("");
 
   function retornaTotalDePesonagens() {
     fetch("https://rickandmortyapi.com/api/character")
@@ -28,15 +31,18 @@ export default function RMGameScreen() {
   }
 
   function chekInfoPersonagem(e, t) {
-    if(e === "Alive" && t === 1){
-      console.log("Você acertou!");
+    if (e === "Alive" && t === 1) {
+      setarInfos(<Text style={styles.right}>Você acertou!</Text>);
       buscaPersonagemAleatorio();
-    }else if (e === "Dead" && t === 0){
-      console.log("Você acertou!");
+      setarConta(conta + 1);
+    } else if (e === "Dead" && t === 0) {
+      setarInfos(<Text style={styles.right}>Você acertou!</Text>);
       buscaPersonagemAleatorio();
-    }else{
-      console.log("Você errou!");
+      setarConta(conta + 1);
+    } else {
+      setarInfos(<Text style={styles.err}>Você errou!</Text>);
       buscaPersonagemAleatorio();
+      setarConta(conta > 1 ? conta - 1 : 0);
     }
   }
 
@@ -48,7 +54,7 @@ export default function RMGameScreen() {
     <View style={styles.container}>
       <View>
         <View>
-          <Text style={styles.namePersonagem}>
+          <Text style={styles.namePersonagem} variant="labelLarge">
             {Personagem?.name ? Personagem?.name : "Desconhecido"}
           </Text>
         </View>
@@ -66,7 +72,9 @@ export default function RMGameScreen() {
               labelStyle={{ color: "#fff" }}
               title="Sim"
               onPress={() => chekInfoPersonagem(Personagem?.status, 1)}
-            >Sim</Button>
+            >
+              Sim
+            </Button>
           </View>
           <View style={styles.contentButtons}>
             <Button
@@ -74,7 +82,9 @@ export default function RMGameScreen() {
               labelStyle={{ color: "#fff" }}
               onPress={() => chekInfoPersonagem(Personagem?.status, 0)}
               title="Não"
-            >Não</Button>
+            >
+              Não
+            </Button>
           </View>
         </View>
         <View style={styles.contentButtons}>
@@ -83,7 +93,23 @@ export default function RMGameScreen() {
             labelStyle={{ color: "#fff" }}
             title="Buscar Personagem"
             onPress={buscaPersonagemAleatorio}
-          >Iniciar o Game</Button>
+          >
+            Iniciar o Game
+          </Button>
+        </View>
+      </View>
+      <View>
+        <Text style={styles.pontos}>
+          Seus Pontos:
+          {conta >= 10
+            ? buscaPersonagemAleatorio() +
+              setarConta(0) +
+              setarInfos(<Text>Parabéns!! Você ganhou.</Text>)
+            : conta}
+          /10
+        </Text>
+        <View>
+          <Text>{infos}</Text>
         </View>
       </View>
     </View>
