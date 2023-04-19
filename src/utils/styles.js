@@ -51,6 +51,43 @@ const styles = StyleSheet.create({
     },
     name:{
       fontSize: 28,
+    },
+    // game
+    namePersonagem:{
+      fontSize: 22,
+      textAlign: 'center',
+      marginBottom: 10,
+      maxHeight: 80,
+    },
+    contentButtons:{
+      margin: 5,
+    },
+    subStatus:{
+      textAlign: 'center',
+      fontSize: 18,
+    },
+    statusButton:{
+      marginTop: 5,
+      backgroundColor: "#00c2cc",
+      borderColor: "#fff",
+    },
+    pontos:{
+      textAlign: 'center',
+      marginTop: 10,
+      fontSize: 18,
+    },
+    right:{
+      marginTop: 5,
+      color: 'green',
+    },
+    err:{
+      marginTop: 5,
+      color: 'red',
+    },
+    win:{
+      textAlign: 'center',
+      fontSize: 22,
+      marginTop: 5,
     }
   });
 
